@@ -1,0 +1,309 @@
+/* ---------- fundo da página, com duas formas decorativas ---------- */
+.auth {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+  overflow: hidden;
+  background: var(--fundo);
+}
+.auth::before,
+.auth::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+.auth::before {
+  width: 22rem;
+  height: 22rem;
+  left: -8rem;
+  bottom: -9rem;
+  background: var(--sol);
+}
+.auth::after {
+  width: 20rem;
+  height: 20rem;
+  top: -9rem;
+  right: -7rem;
+  background: #9fd6d2;
+}
+
+/* ---------- o cartão ---------- */
+.auth__cartao {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 62rem;
+  min-height: 44rem; /* mesma altura no login e no cadastro */
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--papel);
+  box-shadow: 0 24px 60px rgba(10, 61, 71, 0.18);
+}
+
+/* ---------- painel do mar (esquerda) ---------- */
+.auth__marca {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4.5rem 2.5rem 5.5rem;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(160deg, var(--mar-900), var(--mar-700));
+}
+/* duas formas translúcidas de enfeite */
+.auth__marca::before {
+  content: '';
+  position: absolute;
+  width: 14rem;
+  height: 14rem;
+  top: -5rem;
+  right: -5rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+}
+.auth__marca::after {
+  content: '';
+  position: absolute;
+  width: 7rem;
+  height: 7rem;
+  left: -2.5rem;
+  bottom: 6rem;
+  background: rgba(255, 255, 255, 0.07);
+  transform: rotate(45deg);
+}
+
+.auth__nome {
+  position: absolute;
+  z-index: 1;
+  top: 1.5rem;
+  left: 2rem;
+  margin: 0;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+.auth__texto {
+  position: relative;
+  z-index: 1; /* fica por cima das formas */
+}
+.auth__texto h2 {
+  margin: 0 0 0.75rem;
+  font-size: 2rem;
+  color: #fff;
+}
+.auth__texto p {
+  margin: 0 0 1.75rem;
+}
+.auth__trocar {
+  display: inline-block;
+  padding: 0.8rem 2.25rem;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+.auth__trocar:hover {
+  background: #fff;
+  color: var(--mar-900);
+}
+
+/* carimbo: o único movimento da tela */
+.carimbo {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 4.8rem;
+  height: 4.8rem;
+  display: grid;
+  place-items: center;
+  border: 3px dashed var(--sol);
+  border-radius: 50%;
+  color: var(--sol);
+  font-size: 0.8rem;
+  font-weight: 700;
+  transform: rotate(10deg);
+  animation: carimbar 0.5s 0.4s both cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+@keyframes carimbar {
+  from {
+    opacity: 0;
+    transform: rotate(10deg) scale(1.7);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .carimbo {
+    animation: none;
+  }
+}
+
+/* ---------- lado do formulário (direita) ---------- */
+.auth__form {
+  display: flex;
+  align-items: center;
+  padding: 3rem 2.5rem;
+}
+.auth__conteudo {
+  width: 100%;
+  max-width: 24rem;
+  margin: 0 auto;
+}
+
+.auth__form h1 {
+  margin: 0 0 0.25rem;
+  text-align: center;
+  font-size: 2.1rem;
+  color: var(--mar-700);
+}
+.auth__form form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.75rem;
+}
+.auth__form label {
+  display: block;
+  margin: 1.1rem 0 0.35rem;
+  font-weight: 700;
+}
+.auth__form form > :first-child {
+  margin-top: 0;
+}
+
+/* campos: fundo claro, borda visível e espaço à esquerda para o ícone */
+.auth__form input:not([type='checkbox']) {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0 1rem 0 3rem;
+  border: 2px solid var(--borda);
+  border-radius: 12px;
+  background-color: #f0f6f6;
+  background-repeat: no-repeat;
+  background-position: 1rem center;
+  background-size: 1.25rem;
+  color: var(--texto);
+  font: inherit;
+}
+.auth__form input:not([type='checkbox']):focus {
+  border-color: var(--mar-600);
+  background-color: #fff;
+}
+/* a data é digitada direto (dia, mês e ano): tiramos o ícone nativo do calendário */
+.auth__form input[type='date']::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+/* ícones (desenhos pequenos embutidos), um por campo */
+.auth__form #nome {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a646b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21c0-4 4-6 8-6s8 2 8 6'/%3E%3C/svg%3E");
+}
+.auth__form #nascimento {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a646b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M16 3v4M8 3v4M3 10h18'/%3E%3C/svg%3E");
+}
+.auth__form #email {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a646b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpath d='M3 7l9 6 9-6'/%3E%3C/svg%3E");
+}
+.auth__form #senha {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a646b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='10' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E");
+}
+
+/* caixa de aceite: ".auth__form .consentimento" é mais específico que ".auth__form label" */
+.auth__form .consentimento {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 1.4rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.auth__form .consentimento input {
+  flex: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-top: 0.15rem;
+  accent-color: var(--mar-600);
+}
+
+.auth__form [role='alert'] {
+  margin: 1.1rem 0 0;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--atraso);
+  border-radius: 8px;
+  background: var(--atraso-fundo);
+  color: var(--atraso);
+  font-weight: 700;
+}
+
+/* botão arredondado */
+.auth__form button[type='submit'] {
+  align-self: center;
+  min-width: 14rem;
+  min-height: 3.25rem;
+  margin-top: 1.75rem;
+  padding: 0 2.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--mar-700), var(--mar-600));
+  box-shadow: 0 8px 18px rgba(14, 124, 134, 0.3);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.auth__form button[type='submit']:hover {
+  background: var(--mar-900);
+}
+.auth__form button[type='submit']:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* link "Já tem conta?" abaixo do formulário: só aparece no celular,
+   porque no computador quem convida é o painel do mar */
+.auth__form form + p {
+  text-align: center;
+}
+@media (min-width: 861px) {
+  .auth__form form + p {
+    display: none;
+  }
+}
+
+/* ---------- celular: o painel vira uma faixa com o nome no topo ---------- */
+@media (max-width: 860px) {
+  .auth__cartao {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    border-radius: 20px;
+  }
+  .auth__marca {
+    align-items: flex-start;
+    padding: 1.25rem 1.5rem;
+  }
+  .auth__marca::before,
+  .auth__marca::after,
+  .auth__texto,
+  .carimbo {
+    display: none;
+  }
+  .auth__nome {
+    position: static;
+  }
+  .auth__form {
+    padding: 2rem 1.25rem 2.5rem;
+  }
+  .auth::before {
+    width: 12rem;
+    height: 12rem;
+  }
+  .auth::after {
+    width: 11rem;
+    height: 11rem;
+  }
+}
