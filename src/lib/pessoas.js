@@ -25,3 +25,23 @@ export async function removerPessoa(id) {
   const { error } = await supabase.from('pessoas').delete().eq('id', id)
   if (error) throw error
 }
+
+// Garante que a dona da conta também exista como pessoa ("eu")
+export async function garantirEu() {
+  const pessoas = await listarPessoas()
+  if (pessoas.some((p) => p.parentesco === 'eu')) return pessoas
+
+  // nome e nascimento vêm do cadastro (user_metadata)
+  const { data } = await supabase.auth.getUser()
+  const meta = data.user.user_metadata
+  try {
+    await adicionarPessoa({
+      nome: meta.nome,
+      data_nascimento: meta.data_nascimento,
+      parentesco: 'eu',
+    })
+  } catch {
+    // se outra chamada criou ao mesmo tempo, o índice recusa; é só listar de novo
+  }
+  return listarPessoas() // ordenada por criação: "eu" vem primeiro
+}

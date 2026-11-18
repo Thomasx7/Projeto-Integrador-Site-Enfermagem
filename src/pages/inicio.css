@@ -1,0 +1,26 @@
+/* Grade de cartões: quantos couberem na largura da tela */
+.pessoas-grid {
+  list-style: none; padding: 0; margin: 20px 0;
+  display: grid; gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.pessoa-card {
+  background: #fff; padding: 20px; border-radius: 16px;
+  display: grid; gap: 6px; border-top: 6px solid var(--mar-600);
+}
+.pessoa-card span { color: #4a6a70; }
+.pessoa-area { color: var(--mar-700); font-weight: 700; }
+.pessoa-card a {
+  margin-top: 8px; text-align: center; text-decoration: none; font-weight: 700;
+  padding: 10px; border-radius: 999px; background: var(--mar-700); color: #fff;
+}
+
+/* Botões para trocar de pessoa */
+.seletor { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+.seletor button {
+  font: inherit; cursor: pointer; padding: 10px 18px; border-radius: 999px;
+  background: #fff; border: 2px solid var(--mar-600); color: var(--mar-900);
+}
+.seletor button.ativo { background: var(--mar-700); color: #fff; }
+.area-painel { background: #fff; padding: 24px; border-radius: 16px; max-width: 460px; }
+.area-painel h2 { margin-top: 0; color: var(--mar-700); }

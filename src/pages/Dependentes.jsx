@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { areaPorNascimento } from '../lib/areas'
-import { adicionarPessoa, listarPessoas, removerPessoa } from '../lib/pessoas'
+import { adicionarPessoa, garantirEu, removerPessoa } from '../lib/pessoas'
 import './dependentes.css'
 
 export default function Dependentes() {
@@ -14,7 +14,7 @@ export default function Dependentes() {
 
   // Roda uma vez ao abrir a tela: busca as pessoas no banco
   useEffect(() => {
-    listarPessoas()
+    garantirEu()
       .then(setPessoas)
       .catch(() => setErro('Não foi possível carregar as pessoas.'))
       .finally(() => setCarregando(false))
@@ -91,7 +91,9 @@ export default function Dependentes() {
               <strong>{p.nome}</strong>
               <span>{p.parentesco} · {areaPorNascimento(p.data_nascimento).nome}</span>
             </div>
-            <button type="button" onClick={() => aoRemover(p)}>Remover</button>
+            {p.parentesco !== 'eu' && (
+              <button type="button" onClick={() => aoRemover(p)}>Remover</button>
+            )}
           </li>
         ))}
       </ul>

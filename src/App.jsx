@@ -8,6 +8,7 @@ import Dependentes from './pages/Dependentes'
 import EmBreve from './pages/EmBreve'
 import Entrar from './pages/Entrar'
 import Inicio from './pages/Inicio'
+import MinhaArea from './pages/MinhaArea'
 
 // Decide qual tela aparece em cada endereço do site
 export default function App() {
@@ -26,7 +27,7 @@ export default function App() {
         <Route element={<LayoutApp />}>
           <Route path="/" element={<Inicio />} />
           <Route path="/caderneta" element={<EmBreve titulo="Caderneta de Vacinação" />} />
-          <Route path="/minha-area" element={<EmBreve titulo="Minha área" />} />
+          <Route path="/minha-area" element={<MinhaArea />} />
           <Route path="/dependentes" element={<Dependentes />} />
           <Route path="/notificacoes" element={<EmBreve titulo="Notificações" />} />
         </Route>
