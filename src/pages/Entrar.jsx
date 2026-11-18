@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../auth/useAuth'
+import CampoSenha from '../components/CampoSenha'
 
 export default function Entrar() {
   const { entrar } = useAuth()
@@ -29,6 +30,7 @@ export default function Entrar() {
     <main>
       <h1>Entrar</h1>
       <form onSubmit={aoEnviar}>
+        {/* campo do e-mail: continua como input normal */}
         <label htmlFor="email">E-mail</label>
         <input
           id="email"
@@ -36,15 +38,13 @@ export default function Entrar() {
           required
           autoComplete="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)} // atualiza a memória a cada tecla
+          onChange={(e) => setEmail(e.target.value)}
         />
 
-        <label htmlFor="senha">Senha</label>
-        <input
-          id="senha"
-          type="password"
-          required
+        {/* campo da senha: o CampoSenha já traz o rótulo e o botão Mostrar/Esconder */}
+        <CampoSenha
           autoComplete="current-password"
+          required
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
         />

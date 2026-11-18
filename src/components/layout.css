@@ -1,0 +1,28 @@
+.app { display: flex; min-height: 100vh; background: #f4f8f8; }
+
+/* Menu lateral (computador) */
+.menu {
+  width: 260px; flex-shrink: 0; padding: 24px 16px;
+  background: var(--mar-900); color: #fff;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.menu-marca { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.3rem; margin: 0 0 20px 12px; }
+.menu-item {
+  color: #fff; text-decoration: none; padding: 12px 14px; border-radius: 12px;
+}
+.menu-item:hover { background: var(--mar-700); }
+.menu-item.ativo { background: var(--sol); color: var(--mar-900); font-weight: 700; }
+.menu-sair {
+  margin-top: auto; padding: 12px; border-radius: 999px; cursor: pointer;
+  background: transparent; color: #fff; border: 2px solid #fff; font: inherit;
+}
+.conteudo { flex: 1; padding: 32px; }
+
+/* Celular: menu vira barra embaixo */
+@media (max-width: 800px) {
+  .app { flex-direction: column-reverse; }
+  .menu { width: auto; flex-direction: row; overflow-x: auto; padding: 8px; }
+  .menu-marca, .menu-sair { display: none; }
+  .menu-item { white-space: nowrap; font-size: 0.85rem; padding: 10px 12px; }
+  .conteudo { padding: 20px 16px; }
+}

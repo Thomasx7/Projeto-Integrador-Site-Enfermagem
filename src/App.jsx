@@ -1,8 +1,11 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import RotaProtegida from './auth/RotaProtegida'
 import RotaVisitante from './auth/RotaVisitante'
+import LayoutApp from './components/LayoutApp'
 import LayoutAuth from './components/LayoutAuth'
 import CriarConta from './pages/CriarConta'
+import Dependentes from './pages/Dependentes'
+import EmBreve from './pages/EmBreve'
 import Entrar from './pages/Entrar'
 import Inicio from './pages/Inicio'
 
@@ -18,9 +21,15 @@ export default function App() {
         </Route>
       </Route>
 
-      {/* só para quem está logado */}
+      {/* só para quem está logado; todas as telas ganham o menu lateral */}
       <Route element={<RotaProtegida />}>
-        <Route path="/" element={<Inicio />} />
+        <Route element={<LayoutApp />}>
+          <Route path="/" element={<Inicio />} />
+          <Route path="/caderneta" element={<EmBreve titulo="Caderneta de Vacinação" />} />
+          <Route path="/minha-area" element={<EmBreve titulo="Minha área" />} />
+          <Route path="/dependentes" element={<Dependentes />} />
+          <Route path="/notificacoes" element={<EmBreve titulo="Notificações" />} />
+        </Route>
       </Route>
 
       {/* qualquer outro endereço volta para o início */}

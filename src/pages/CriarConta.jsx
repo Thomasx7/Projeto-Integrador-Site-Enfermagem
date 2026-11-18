@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/useAuth'
 import { calcularIdade } from '../lib/idade'
+import CampoSenha from '../components/CampoSenha'
 
 const IDADE_MINIMA = 18 // quem cria a conta é um adulto; os filhos entram como dependentes
 
@@ -97,15 +98,13 @@ export default function CriarConta() {
         <label htmlFor="email">E-mail</label>
         <input id="email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
 
-        <label htmlFor="senha">Senha (pelo menos 8 caracteres)</label>
-        <input
-          id="senha"
-          type="password"
-          required
+        <CampoSenha
+          rotulo="Senha (pelo menos 8 caracteres)"
           autoComplete="new-password"
+          required
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
-        />
+        />       
 
         <label className="consentimento">
           <input type="checkbox" checked={aceitou} onChange={(e) => setAceitou(e.target.checked)} />

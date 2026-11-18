@@ -269,6 +269,34 @@
 .auth__form form + p {
   text-align: center;
 }
+
+
+/* campo de senha: botão "Mostrar/Esconder" dentro do campo, à direita */
+.campo-senha {
+  position: relative;
+}
+.auth__form .campo-senha input {
+  padding-right: 6rem; /* espaço para o botão não ficar por cima do texto */
+}
+.campo-senha__botao {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  padding: 0.45rem 0.75rem;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--mar-700);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.campo-senha__botao:hover {
+  background: var(--agua-100);
+}
+
 @media (min-width: 861px) {
   .auth__form form + p {
     display: none;
