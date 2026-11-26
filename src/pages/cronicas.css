@@ -1,0 +1,13 @@
+.cr-lista { list-style: disc !important; padding-left: 22px !important; }
+.cr-form { display: grid; gap: 12px; max-width: 460px; background: #fff; padding: 18px; border-radius: 16px; margin: 12px 0; }
+.cr-form label, .cr-form legend { font-weight: 700; display: grid; gap: 4px; }
+.cr-form input[type='text'], .cr-form input:not([type]), .cr-form input[type='time'] {
+  font: inherit; padding: 10px; border: 2px solid var(--mar-600); border-radius: 10px; margin-right: 8px;
+}
+.cr-form fieldset { border: 0; padding: 0; }
+.cr-dia { display: inline-flex !important; margin-right: 10px; font-weight: 400 !important; }
+.cr-form button[type='submit'] { font: inherit; padding: 12px; border: 0; border-radius: 999px; background: var(--mar-700); color: #fff; cursor: pointer; }
+.cr-remedios { list-style: none; padding: 0; }
+.alarme { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); z-index: 50; display: grid; gap: 8px; width: min(92vw, 520px); }
+.alarme-item { background: var(--sol); color: var(--mar-900); padding: 14px 16px; border-radius: 14px; display: flex; justify-content: space-between; gap: 12px; align-items: center; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+.alarme-item button { font: inherit; padding: 8px 16px; border: 0; border-radius: 999px; background: var(--mar-900); color: #fff; cursor: pointer; }

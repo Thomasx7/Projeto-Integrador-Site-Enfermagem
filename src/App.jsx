@@ -10,6 +10,9 @@ import Entrar from './pages/Entrar'
 import Inicio from './pages/Inicio'
 import MinhaArea from './pages/MinhaArea'
 import Caderneta from './pages/Caderneta'
+import Cronicas from './pages/Cronicas'
+
+
 
 // Decide qual tela aparece em cada endereço do site
 export default function App() {
@@ -29,6 +32,7 @@ export default function App() {
           <Route path="/" element={<Inicio />} />
           <Route path="/caderneta" element={<Caderneta />} />
           <Route path="/minha-area" element={<MinhaArea />} />
+          <Route path="/cronicas" element={<Cronicas />} />
           <Route path="/dependentes" element={<Dependentes />} />
           <Route path="/notificacoes" element={<EmBreve titulo="Notificações" />} />
         </Route>

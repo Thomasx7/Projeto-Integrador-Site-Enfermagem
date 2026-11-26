@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import { useAuth } from '../auth/useAuth' // use o mesmo import que o Entrar.jsx usa
+import { useAuth } from '../auth/useAuth'
+import AlarmeRemedios from './AlarmeRemedios'
 import './layout.css'
 
 // Itens do menu: para mudar o menu, mexa só aqui
@@ -7,6 +8,7 @@ const ITENS = [
   { para: '/', texto: 'Início', fim: true },
   { para: '/caderneta', texto: 'Caderneta de Vacinação' },
   { para: '/minha-area', texto: 'Minha área' },
+  { para: '/cronicas', texto: 'Doenças e remédios' },
   { para: '/dependentes', texto: 'Dependentes' },
   { para: '/notificacoes', texto: 'Notificações' },
 ]
@@ -16,6 +18,8 @@ export default function LayoutApp() {
 
   return (
     <div className="app">
+      {/* Avisa a hora dos remédios em qualquer tela (com o site aberto) */}
+      <AlarmeRemedios />
       <nav className="menu" aria-label="Menu principal">
         <p className="menu-marca">P.I Enfermagem</p>
         {ITENS.map((item) => (
